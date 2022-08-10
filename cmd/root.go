@@ -13,12 +13,11 @@ var rootCmd = &cobra.Command{
 	Long:  "从url或者文件读取需要扫描的用友nc链接,进行用友nc_beanshell扫描",
 	Run: func(cmd *cobra.Command, args []string) {
 		if urla != "" {
-			s := nc.NewScan([]string{urla}, thread, output)
-			s.StartScan()
+			url := []string{urla}
+			nc.StartScan(url, thread, output)
 		} else if localfile != "" {
 			urls := removeRepeatedElement(nc.LocalFile(localfile))
-			s := nc.NewScan(urls, thread, output)
-			s.StartScan()
+			nc.StartScan(urls, thread, output)
 		} else {
 			fmt.Println("nc_beanshell_scan,use -h see usage")
 		}

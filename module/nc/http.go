@@ -110,8 +110,8 @@ func rdnendpoint() string {
 	return keys[n]
 }
 
-func endpointrequest(url1 []string) (*resps, error) {
-	Url := url1[0] + rdnendpoint()
+func endpointrequest(url1 string) (*resps, error) {
+	Url := url1 + rdnendpoint()
 	transport := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
